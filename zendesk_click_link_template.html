@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Whatever</title>
+    <style type="text/css" media="screen">
+    </style>
+
+  <body>
+
+    This is the bookmarklet for TpT to check for admin link, if so, go there, if not search for email:
+    <a href="javascript:
+		function openOrSearchAdmin() {
+			var adminLink = $('div#main_panes div:visible div.custom_field_24100859 input')[0].value;
+
+			if (adminLink.length > 0) {
+				console.log('adminLink.length');
+				window.open(adminLink);
+			} 
+			else
+			{
+				var encodedEmail = 
+				encodeURIComponent($('div#main_panes div:visible a.email')[0].innerHTML);
+				console.log('encodedEmail');
+				var url = 'https://www.yourURL.com/admin/?search%5D=' + encodedEmail;
+				window.open(url);
+			};
+		};
+		openOrSearchAdmin();">Drag to bookmark bar</a>
+  </body>
+</html>
